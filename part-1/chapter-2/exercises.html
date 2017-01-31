@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chapter 2 — Exercises</title>
+  </head>
+  <body>
+    <div style="margin-bottom: 2rem;">
+      <h1>Minimum</h1>
+      <p>The previous chapter introduced the standard function `Math.min` that returns its smallest argument. We can do taht ourselves now. Write a function `min` that takes two arguments and returns their minimum.</p>
+      <div class="js-1"></div>
+    </div>
+    <div style="margin-bottom: 2rem;">
+      <h1>Recursion</h1>
+      <p>We've seen that `%` (the remainder operator) can be used to test whether a number is even or odd by using `% 2` to check whether it's divisible by two. Here's another way to define whether a positive whole number is even or odd:</p>
+      <ul>
+        <li>Zero is even</li>
+        <li>One is odd</li>
+        <li>For any other number <i>N</i>, its evenness is the same as <i>N - 2</i></li>
+      </ul>
+      <p>Define a recursive function `isEven` corresponding to this description. The function should accept a `number` parameter and return a Boolean.</p>
+      <p>Test it on 50 and 75. See how it behaves on -1. Why? Can you think of a way to fix this?</p>
+      <div class="js-2"></div>
+    </div>
+    <div style="margin-bottom: 2rem;">
+      <h1>Bean Counting</h1>
+      <p>You can get the <i>N</i>th character, or letter, from a string by writing `string.charAt(N)`, similar to how you get its length with `s`.length. The returned value will be a string containing only one character (for example, `b`). The first character has position zero, which causes the last one to be found as position `string.length - 1`. In other words, a two-character string has length 2, and its characters have positions 0 and 1.</p>
+      <p>Write a function `countBs` that takes a string as its only argument and returns a number that indicates how many uppercase `B` characters are in the string.</p>
+      <p>Next, write a function called `countChar` that behaves like `countBs`, except it takes a second argument that indicates the character that is to be counted (rather than counting only uppercase `B` characters). Rewrite `countBs` to make use of this new function.
+      <div class="js-3a" style="margin-bottom: 1rem;"></div>
+      <div class="js-3b" style="margin-bottom: 1rem;"></div>
+      <div class="js-3c"></div>
+    </div>
+    <script type="text/javascript" src="exercises.js"></script>
+  </body>
+</html>
