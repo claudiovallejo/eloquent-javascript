@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Chapter 3 — Exercises</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../tachyons.css"/>
+  </head>
+  <body class="mt5 mw7 center">
+    <!-- Exercise #1: Minimum -->
+    <div class="mb5 pb5 bb b--gray">
+      <h1 class="sans-serif">Minimum</h1>
+      <p class="mb4 sans-serif lh-copy">The previous chapter introduced the standard function <span class="code blue">Math.min</span> that returns its smallest argument. We can do that ourselves now. Write a function <span class="code blue">min</span> that takes two arguments and returns their minimum.</p>
+      <!-- Answer -->
+      <div class="pa4 code white bg-black">
+        <code style="line-height: 2;">
+          function min(a, b) {
+          <div class="pl3">
+            if (a < b) {
+              <div class="pl3">
+                console.log(a);
+              </div>
+            } else {
+              <div class="pl3">
+                console.log(b);
+              </div>
+            }
+          </div>
+          }
+        </code>
+      </div>
+    </div>
+    <!-- Exercise #2: Recursion -->
+    <div class="mb5 pb5 bb b--gray">
+      <h1 class="sans-serif">Recursion</h1>
+      <p class="mb4 sans-serif lh-copy">We've seen that <span class="code blue">%</span> (the remainder operator) can be used to test whether a number is even or odd by using <span class="code blue">% 2</span> to check whether it's divisible by two. Here's another way to define whether a positive whole number is even or odd:</p>
+      <ul class="mb4 list">
+        <li class="pb3">Zero is even</li>
+        <li class="pb3">One is odd</li>
+        <li>For any other number <i>N</i>, its evenness is the same as <i>N - 2</i></li>
+      </ul>
+      <p class="mb4 sans-serif lh-copy">Define a recursive function <span class="code blue">isEven</span> corresponding to this description. The function should accept a <span class="code blue">number</span> parameter and return a Boolean.</p>
+      <p class="mb4 sans-serif lh-copy">Test it on 50 and 75. See how it behaves on -1. Why? Can you think of a way to fix this?</p>
+      <!-- Answer -->
+      <div class="pa4 code white bg-black">
+        <code style="line-height: 2;">
+          function isEven(number) {
+          <div class="pl3">
+            var n = Math.abs(number);<br>
+            if (n > 2) {
+              <div class="pl3">
+                isEven(n - 2);
+              </div>
+            } else if (n == 1) {
+              <div class="pl3">
+                console.log(false);
+              </div>
+            } else {
+              <div class="pl3">
+                console.log(true);
+              </div>
+            }
+          </div>
+          }
+        </code>
+      </div>
+    </div>
+    <!-- Exercise #3: Bean Counting -->
+    <div class="mb5 pb5">
+      <h1 class="sans-serif">Bean Counting</h1>
+      <p class="mb4 sans-serif lh-copy">You can get the <i>N</i>th character, or letter, from a string by writing <span class="code blue">string.charAt(N)</span>, similar to how you get its length with <span class="code blue">s.length</span>. The returned value will be a string containing only one character (for example, <span class="code blue">b</span>). The first character has position zero, which causes the last one to be found at position <span class="code blue">string.length - 1</span>. In other words, a two-character string has length 2, and its characters have positions 0 and 1.</p>
+      <p class="mb4 sans-serif lh-copy">Write a function <span class="code blue">countBs</span> that takes a string as its only argument and returns a number that indicates how many uppercase <span class="code blue">B</span> characters are in the string.</p>
+      <p class="mb4 sans-serif lh-copy">Next, write a function called <span class="code blue">countChar</span> that behaves like <span class="code blue">countBs</span>, except it takes a second argument that indicates the character that is to be counted (rather than counting only uppercase <span class="code blue">B</span> characters). Rewrite <span class="code blue">countBs</span> to make use of this new function.</p>
+      <!-- Answers -->
+      <div class="mb4 pa4 code white bg-black">
+        <code style="line-height: 2;">
+          function countBs(string) {
+            <div class="pl3">
+              var b = 0;<br>
+              for (var s = 0; s < string.length; s+) {
+                <div class="pl3">
+                  if (string.charAt(s) === "B") {
+                    <div class="pl3">
+                      b += 1;
+                    </div class="pl3">
+                  }
+                </div>
+              }<br>
+              console.log(b);
+            </div>
+          }
+        </code>
+      </div>
+      <div class="pa4 code white bg-black">
+        <code style="line-height: 2;">
+          function countChar(string, letter) {
+            <div class="pl3">
+              var v = 0;<br>
+              for (var s = 0; s < string.length; s+) {
+                <div class="pl3">
+                  if (string.charAt(s) === letter) {
+                    <div class="pl3">
+                      v += 1;
+                    </div>
+                  }
+                </div>
+              }<br>
+              console.log(v);
+            </div>
+          }
+        </code>
+      </div>
+      <div class="pa4 code white bg-black">
+        <code style="line-height: 2;">
+          function countBs(string) {
+            <div class="pl3">
+              countChar(string, "B");
+            </div>
+          }
+        </code>
+      </div>
+    </div>
+    <p class="f6 code moon-gray">Worked through the exercises Monday February 27, 2017</p>
+    <script type="text/javascript" src="exercises.js"></script>
+  </body>
+</html>
