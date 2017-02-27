@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Chapter 4 — Exercises</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../tachyons.css"/>
+  </head>
+  <body class="mt5 mw7 center">
+    <!-- Exercise #1: Minimum -->
+    <div class="mb5 pb5 bb b--gray">
+      <h1 class="sans-serif">The Sum of a Range</h1>
+      <p class="mb4 sans-serif lh-copy">The introduction of this book alluded to the following as a nice way to compute the sum of a range of numbers:</p>
+      <div class="mb4 pa3 code gray bt bb b--moon-gray">
+        <code style="line-height: 2;">
+          console.log(sum(range(1, 10)));
+        </code>
+      </div>
+      <p class="mb4 sans-serif lh-copy">Write a <span class="code blue">range</span> function that takes two arguments, <span class="code blue">start</span> and <span class="code blue">end</span>, and returns an array containing all the numbers from <span class="code blue">start</span> up to (and including) <span class="code blue">end</span>.</p>
+      <p class="mb4 sans-serif lh-copy">Next, write a <span class="code blue">sum</span> function that takes an array of numbers and returns the sum of these numbers. Run the previous program and see whether it does indeed return 55.</p>
+      <p class="mb4 sans-serif lh-copy">As a bonus assignment, modify your <span class="code blue">range</span> function to take an optional third argument taht indicates the "step" value used to build up the array. If no step is given, the array elements go up by increments of one, corresponding to the old behavior. The function call <span class="code blue">range(1, 10, 2)</span> should return <span class="code blue">[1, 3, 5, 7, 9]</span>. Make sure it also works with negative step values so that <span class="code blue">range(5, 2, -1)</span> produces <span class="code blue">[5, 4, 3, 2]</span>.</p>
+      <!-- Answer -->
+      <h3 class="f5 sans-serif">Answer</h3>
+      <div class="pa4 code white bg-black">
+        <code style="line-height: 2;">
+          function range(start, end) {
+          <div class="pl3">
+            var list = [ ];<br>
+            for (start; start <= end; start++) {
+              <div class="pl3">
+                list.push(start);
+              </div>
+            }
+            return list;
+          </div>
+          }
+        </code>
+      </div>
+      <div class="mb4 pa4 code white bg-black">
+        <code style="line-height: 2;">
+          function sum(list) {
+          <div class="pl3">
+            var total = 0;<br>
+            for (var 1 = 0; i < list.length; i++) {
+              <div class="pl3">
+                total += list[i];
+              </div>
+            }
+            console.log(total);
+          </div>
+          }
+        </code>
+      </div>
+      <div class="pa4 code white bg-black">
+        <code style="line-height: 2;">
+          function range(start, end, step = 1) {
+          <div class="pl3">
+            var list = [ ];<br>
+            if (start > end) {
+              <div class="pl3">
+                for (start; start >= end; start += step) {
+                <div class="pl3">
+                  list.push(start);
+                </div>
+                }
+              </div>
+            } else {
+            <div class="pl3">
+              for (start; start <= end; start += step) {
+              <div class="pl3">
+                list.push(start);
+              </div>
+              }
+            </div>
+          }<br>
+          console.log(list);
+          </div>
+          }
+        </code>
+      </div>
+    </div>
+    <script type="text/javascript" src="c4-exercises.js"></script>
+  </body>
+</html>
