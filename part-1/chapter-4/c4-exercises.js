@@ -49,10 +49,9 @@ function reverseArrayInPlace(array) {
 //  Exercise #3: A List
 function arrayToList(array) {
   var list = null;
-  for (var i = array[array.length - 1]; i >= 0; i--) {
+  for (var i = array.length - 1; i >= 0; i--)
     list = { value: array[i], rest: list };
-  }
-  console.log(list);
+  return list;
 }
 
 function listToArray(list) {
@@ -61,10 +60,18 @@ function listToArray(list) {
     array.push(list.value);
     list = list.rest;
   }
-  console.log(array);
+  return array;
 }
 
 function prepend(element, list) {
-  var newList = { value: element, rest: list };
-  console.log(newList);
+  return { value: element, rest: list };
+}
+
+function nth(list, n) {
+  if (!list)
+    return undefined;
+  else if (n == 0)
+    return list.value
+  else
+    return nth(list.rest, n - 1);
 }

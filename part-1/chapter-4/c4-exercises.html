@@ -144,7 +144,7 @@
           </code>
         </div>
         <p class="mb4 sans-serif lh-copy">A nice thing about lists is that they can share parts of their structure. For example, if I create two new values <span class="code blue">{ value: 0, rest: list }</span> and <span class="code blue">{ value: -1, rest: list }</span> (with <span class="code blue">list</span> referring to the variable defined earlier), they are both independent lists, but they share the structure that makes up their last three elements. In addition, the original list is also still a valid three-element list.</p>
-        <p class="mb4 sans-serif lh-copy">Write a function <span class="code blue">arrayToList</span> that builds up a data structure like the previous one when given <span class="code blue">[1, 2, 3]</span> as an argument, and write a <span class="code blue">listToArray</span> function that produces an array from a list. Also write the helper functions <span class="code blue">prepend</span>, which takes an element and a list and createsa  new list that adds the element to the front of the input list, and <span class="code blue">nth</span>, which takes a list and a number and returns the element at the given postition in the list, or <span class="code blue">undefined</span> when there is no such element.</p>
+        <p class="mb4 sans-serif lh-copy">Write a function <span class="code blue">arrayToList</span> that builds up a data structure like the previous one when given <span class="code blue">[1, 2, 3]</span> as an argument, and write a <span class="code blue">listToArray</span> function that produces an array from a list. Also write the helper functions <span class="code blue">prepend</span>, which takes an element and a list and creates a  new list that adds the element to the front of the input list, and <span class="code blue">nth</span>, which takes a list and a number and returns the element at the given postition in the list, or <span class="code blue">undefined</span> when there is no such element.</p>
         <p class="mb4 sans-serif lh-copy">If you haven't already, also write a recursive version of <span class="code blue">nth</span>.</p>
         <!-- Answer -->
         <h3 class="f5 sans-serif">Answer</h3>
@@ -153,12 +153,56 @@
             function arrayToList(array) {
             <div class="pl3">
               var list = null;<br>
-              for (var i = array[array.length - 1]; i >= 0; i--) {
+              for (var i = array.length - 1; i >= 0; i--)
               <div class="pl3">
                 list = { value: array[i], rest: list };
               </div>
+              return list;
+            </div>
+            }
+          </code>
+        </div>
+        <div class="pa4 code white bg-black">
+          <code style="line-height: 2;">
+            function listToArray(list) {
+            <div class="pl3">
+              var array = [ ];<br>
+              while (list !== null) {
+              <div class="pl3">
+                array.push(list.value);<br>
+                list = list.rest;
+              </div>
               }<br>
-              console.log(list);
+              return array;
+            </div>
+            }
+          </code>
+        </div>
+        <div class="pa4 code white bg-black">
+          <code style="line-height: 2;">
+            function prepend(element, list) {
+            <div class="pl3">
+              return { value: element, rest: list };
+            </div>
+            }
+          </code>
+        </div>
+        <div class="pa4 code white bg-black">
+          <code style="line-height: 2;">
+            function nth(list, n) {
+            <div class="pl3">
+              if (!list)
+              <div class="pl3">
+                return undefined;
+              </div>
+              else if (n == 0)
+              <div class="pl3">
+                return list.value;
+              </div>
+              else
+              <div class="pl3">
+                return nth(list.rest, n - 1);
+              </div>
             </div>
             }
           </code>
