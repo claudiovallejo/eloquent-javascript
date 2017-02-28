@@ -79,6 +79,92 @@
         </code>
       </div>
     </div>
+    <!-- Exercise #2: Reversing and Array -->
+    <div class="mb5 pb5 bb b--gray">
+      <h1 class="sans-serif">Reversing an Array</h1>
+      <p class="mb4 sans-serif lh-copy">Arrays have a method <span class="code blue">reverse</span>, which changes the array by inverting the order in which its elements appear. For this exercise, write two functions, <span class="code blue">reverseArray</span> and <span class="code blue">reverseArrayInPlace</span>. The first, <span class="code blue">reverseArray</span>, takes an array as an argument and produces a <i>new</i> array that has the same elements in the inverse order. The second, <span class="code blue">reverseArrayInPlace</span>, does what the <span class="code blue">reverse</span> method does: it modifies the array given as argument in order to reverse its elements. Neither may use the standard <span class="code blue">reverse</span> method.</p>
+      <p class="mb4 sans-serif lh-copy">Thinking back to the notes about side effects and pure functions in the previous chapter, which variant do you expect to be useful in more situations? Which one is more efficient?</p>
+      <!-- Answer -->
+      <h3 class="f5 sans-serif">Answer</h3>
+      <div class="pa4 code white bg-black">
+        <code style="line-height: 2;">
+          function reverseArray(array) {
+          <div class="pl3">
+            var newArray = [ ];<br>
+            var n = array.length - 1;<br>
+            for (n; n >= 0; n--) {
+            <div class="pl3">
+              newArray.push(array[n]);
+            </div>
+            }<br>
+            console.log(newArray);
+          </div>
+          }
+        </code>
+      </div>
+      <div class="pa4 code white bg-black">
+        <code style="line-height: 2;">
+          function reverseArrayInPlace(array) {
+          <div class="pl3">
+            for (var i = 0; i < Math.floor(array.length / 2); i++) {
+            <div class="pl3">
+              var a = array[i];<br>
+              array[i] = array[array.length - 1 - i];<br>
+              array[array.length - 1 - i] = a;
+            </div>
+            }<br>
+            console.log(array);
+          </div>
+          }
+        </code>
+      </div>
+    </div>
+      <!-- Exercise #3: A List -->
+      <div class="mb5 pb5 bb b--gray">
+        <h1 class="sans-serif">A List</h1>
+        <p class="mb4 sans-serif lh-copy">Objects, as generic blobs of values, can be used to build all sorts of data structures. A common data structure is the <i>list</i> (not to be confused with the array). A list is a nested set of objects, with the first object holding reference to the second, and the second to the third, and son on.</p>
+        <div class="mb4 pa3 code gray bt bb b--moon-gray">
+          <code style="line-height: 2;">
+            var list = {
+            <div class="pl3">
+              value: 1,<br>
+              rest: {
+              <div class="pl3">
+                value: 2,<br>
+                rest: {
+                <div class="pl3">
+                  value: 3,<br>
+                  rest: null
+                </div>
+                }
+              </div>
+              }
+            </div>
+            }
+          </code>
+        </div>
+        <p class="mb4 sans-serif lh-copy">A nice thing about lists is that they can share parts of their structure. For example, if I create two new values <span class="code blue">{ value: 0, rest: list }</span> and <span class="code blue">{ value: -1, rest: list }</span> (with <span class="code blue">list</span> referring to the variable defined earlier), they are both independent lists, but they share the structure that makes up their last three elements. In addition, the original list is also still a valid three-element list.</p>
+        <p class="mb4 sans-serif lh-copy">Write a function <span class="code blue">arrayToList</span> that builds up a data structure like the previous one when given <span class="code blue">[1, 2, 3]</span> as an argument, and write a <span class="code blue">listToArray</span> function that produces an array from a list. Also write the helper functions <span class="code blue">prepend</span>, which takes an element and a list and createsa  new list that adds the element to the front of the input list, and <span class="code blue">nth</span>, which takes a list and a number and returns the element at the given postition in the list, or <span class="code blue">undefined</span> when there is no such element.</p>
+        <p class="mb4 sans-serif lh-copy">If you haven't already, also write a recursive version of <span class="code blue">nth</span>.</p>
+        <!-- Answer -->
+        <h3 class="f5 sans-serif">Answer</h3>
+        <div class="pa4 code white bg-black">
+          <code style="line-height: 2;">
+            function arrayToList(array) {
+            <div class="pl3">
+              var list = null;<br>
+              for (var i = array[array.length - 1]; i >= 0; i--) {
+              <div class="pl3">
+                list = { value: array[i], rest: list };
+              </div>
+              }<br>
+              console.log(list);
+            </div>
+            }
+          </code>
+        </div>
+      </div>
+    </div>
     <script type="text/javascript" src="c4-exercises.js"></script>
   </body>
 </html>
