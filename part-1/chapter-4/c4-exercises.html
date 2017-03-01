@@ -208,6 +208,44 @@
           </code>
         </div>
       </div>
+      <!-- Exercise #4: Deep Comparison -->
+      <div class="mb5 pb5">
+        <h1 class="sans-serif">Deep Comparison</h1>
+        <p class="mb4 sans-serif lh-copy">The <span class="code blue">==</span> operator compares objects by identity. But sometimes, you would prefer to compare the values of their actual properties.</p>
+        <p class="mb4 sans-serif lh-copy">Write a function, <span class="code blue">deepEqual</span>, that takes two values and returns <span class="code blue">true</span> only if they are the same value or are objects with the same properties whose values are also equal when compared with a recursive call to <span class="code blue">deepEqual</span>.</p>
+        <p class="mb4 sans-serif lh-copy">To find out whether to compare two things by identity (use the <span class="code blue">===</span> operator for that) or by looking at their properties, you can use the <span class="code blue">typeof</span> operator. If it produces <span class="code blue">"object"</span> for both values, you should do a deep comparison. But you have to take one silly exception in to account: by a historical accident, <span class="code blue">typeof null</span> also produces <span class="code blue">"object"</span>.</p>
+        <!-- Answer -->
+        <h3 class="f5 sans-serif">Answer</h3>
+        <div class="pa4 code white bg-black">
+          <code style="line-height: 2;">
+            function deepEqual(a, b) {
+            <div class="pl3">
+              if (a == b) return true;<br>
+              if (a == null || typeof a != "object" ||<br>
+              b == null || typeof b != "object")
+              <div class="pl3">
+                return false;
+              </div>
+              var propsInA = 0, propsInB = 0;<br>
+              for (var prop in a)
+              <div class="pl3">
+                propsInA += 1;
+              </div>
+              for (var prop in b) {
+              <div class="pl3">
+                propsInB += 1;<br>
+                if (!(prop in a) || !deepEqual(a[prop], b[prop]))
+                <div class="pl3">
+                  return false;
+                </div>
+              </div>
+            }<br>
+            return propsInA == propsInB;
+            </div>
+            }
+          </code>
+        </div>
+      </div>
     </div>
     <p class="f6 code moon-gray">Completed on Tuesday February 28, 2017</p>
     <script type="text/javascript" src="c4-exercises.js"></script>
